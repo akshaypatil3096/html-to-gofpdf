@@ -1,0 +1,822 @@
+{{define "kfs_template"}}
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Key Facts Statement</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <style>
+        @page {
+            size: A4;
+            margin: 0;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html,
+        body {
+            width: 100%;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 10pt;
+            line-height: 1.2;
+            color: #000;
+            background: #d8d8d8;
+            padding: 10px;
+        }
+
+        /* A4 page — 210.0mm × 297.0mm (matches A4 standard) */
+        .page {
+            width: 210mm;
+            height: 297mm;
+            margin: 0 auto 12px;
+            background: #fff;
+            overflow: hidden;
+            position: relative;
+            box-sizing: border-box;
+        }
+
+        .page-break {
+            page-break-after: always;
+        }
+
+        /*
+         * PAGE 1 — measured from english.pdf
+         * table top: 55.84mm | left: 14.17mm | right: 8.82mm | bottom: 19.78mm
+         * title top: 37.4mm | subtitle top: 47.0mm | logo top: 13.4mm
+         */
+        .page-1 {
+            padding: 34.84mm 8.82mm 19.78mm 14.17mm;
+        }
+
+        .page-1 .logo {
+            position: absolute;
+            top: 13.41mm;
+            left: 27.69mm;
+            width: 31.77mm;
+            height: 4.15mm;
+        }
+
+        .page-1 .header {
+            position: absolute;
+            top: 22.4mm;
+            left: 14.17mm;
+            right: 8.82mm;
+            text-align: center;
+        }
+
+        .page-1 .header .title {
+            font-size: 15pt;
+            font-weight: bold;
+            line-height: 1;
+        }
+
+        .page-1 .header .subtitle {
+            font-size: 10pt;
+            line-height: 1.2;
+            margin-top: 0.87mm;
+        }
+
+
+        /*
+         * PAGE 2 — table top: 58.94mm | left: 14.17mm | right: 8.82mm
+         * header top: 46.81mm | logo top: 13.41mm
+         */
+        .page-2 {
+            padding: 50.94mm 8.82mm 61.94mm 14.17mm;
+        }
+
+        .page-2 .logo {
+            position: absolute;
+            top: 13.41mm;
+            left: 27.69mm;
+            width: 31.77mm;
+            height: 4.15mm;
+        }
+
+        .page-2 .header {
+            position: absolute;
+            top: 46.81mm;
+            left: 14.17mm;
+            right: 8.82mm;
+            text-align: center;
+        }
+
+        .page-2 .header .title {
+            font-size: 10pt;
+            font-weight: normal;
+            line-height: 0.1;
+        }
+
+        .clause-cell {
+            padding-top: 30px;
+            padding-bottom: 30px;
+            padding-right: 30px;
+            padding-left: 10PX;
+        }
+
+        .col-cell {
+            padding: 10px 10px 10px 10px;
+        }
+
+        .clause-cell-2 {
+            padding-top: 20px;
+            padding-bottom: 20px;
+            padding-right: 40px;
+            padding-left: 10PX;
+        }
+
+        .clause-cell-3 {
+            padding-top: 20px;
+            padding-bottom: 20px;
+            padding-right: 60px;
+            padding-left: 10PX;
+        }
+
+        .clause-cell-4 {
+            padding-top: 10px;
+        }
+
+        .clause-cell-5 {
+            padding-top: 10px;
+            padding-bottom: 10px;
+
+        }
+
+
+        /*
+         * PAGE 3 — table top: 65.49mm | left: 14.17mm | right: 8.82mm
+         * PART 2 top: 33.12mm | Annex B: 40.29mm | title: 47.61mm | logo: 13.41mm
+         */
+        .page-3 {
+            padding: 53.49mm 8.82mm 65.07mm 14.17mm;
+        }
+
+        .page-3 .logo {
+            position: absolute;
+            top: 13.41mm;
+            left: 27.69mm;
+            width: 31.77mm;
+            height: 4.15mm;
+        }
+
+        /* .page-3 .annex-header {
+            position: absolute;
+            top: 25.12mm;
+            right: 31.82mm;
+            left: 14.17mm;
+            text-align: right;
+            font-weight: bold;
+            font-size: 10pt;
+            line-height: 2.2;
+        } */
+
+        .page-3 .annex-header {
+            position: absolute;
+            top: 25.12mm;
+            right: 31.82mm;
+            left: 14.17mm;
+            text-align: right;
+            font-size: 10pt;
+            line-height: 2.2;
+        }
+
+        .page-3 .annex-header .part2 {
+            font-weight: normal;
+        }
+
+        .page-3 .annex-header .annexb {
+            font-weight: bold;
+        }
+
+        .page-3 .header {
+            position: absolute;
+            top: 47.61mm;
+            left: 14.17mm;
+            right: 8.82mm;
+            text-align: center;
+        }
+
+        .page-3 .header .title {
+            font-size: 10pt;
+            font-weight: normal;
+            line-height: 1.2;
+        }
+
+        .logo {
+            margin: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 5pt;
+            color: #888;
+            border: 0.5pt dashed #bbb;
+            background: #fafafa;
+            overflow: hidden;
+        }
+
+        .logo img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            display: block;
+        }
+
+        .table-wrapper {
+            width: 100%;
+            margin-bottom: -1px;
+        }
+
+        .table-wrapper+.table-wrapper {
+            margin-top: -1px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: #fff;
+            color: #000;
+            table-layout: fixed;
+            border: 1px solid #000;
+        }
+
+        table+table {
+            margin-top: -1px;
+        }
+
+        td,
+        th {
+            border: 1px solid #000;
+            padding: 2pt 3pt;
+            vertical-align: middle;
+            word-break: break-word;
+            overflow-wrap: break-word;
+            font-size: 10pt;
+            line-height: 1.2;
+        }
+
+        .row-num {
+            width: 4.93%;
+            text-align: center;
+            font-weight: bold;
+            font-size: 10pt;
+            padding: 2pt 1pt;
+        }
+
+        .row-num-skip {
+            border-top: hidden;
+            width: 4.93%;
+        }
+
+        .label-cell-1 {
+            font-weight: bold;
+        }
+
+        .label-cell-2 {
+            padding-left: 15px;
+            font-weight: bold;
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        .text-right {
+            text-align: right;
+        }
+
+        .text-red {
+            color: #ED232A;
+        }
+
+        .table-kfs .row7-header,
+        .table-kfs .row8-header {
+            font-size: 10pt;
+            line-height: 1.1;
+            padding: 1pt 2pt;
+        }
+
+        .col-3 {
+            padding-top: 8px;
+            padding-bottom: 8px;
+        }
+
+        .col-4 {
+            padding-left: 10px;
+        }
+
+        .col-5 {
+            font-weight: bold;
+        }
+
+        @media screen {
+            body {
+                overflow-x: hidden;
+                margin: 0;
+                padding: 10px;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: flex-start;
+                zoom: calc((100vw - 20px) / 794px);
+            }
+
+            .page {
+                margin: 0 auto 12px;
+                box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+                transform-origin: top center;
+            }
+        }
+
+        @media screen and (min-width: 814px) {
+            body {
+                zoom: 1;
+            }
+        }
+
+        @media print {
+            body {
+                background: #fff;
+                padding: 0;
+                zoom: 1 !important;
+            }
+
+            .page {
+                margin: 0;
+                box-shadow: none;
+            }
+
+            .logo {
+                border: none;
+                background: transparent;
+                color: transparent;
+            }
+
+            .page-break {
+                page-break-after: always;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- PAGE 1: Part 1 -->
+    <div class="page page-1 page-break">
+        <div class="logo">{{ image_placeholder }}</div>
+        <div class="header">
+            <div class="title">Key Facts Statement</div>
+            <div class="subtitle">Part 1 (Interest rate and fees/charges)</div>
+        </div>
+        <div class="table-wrapper">
+            <table class="table-kfs">
+                <colgroup>
+                    <col style="width:4.93%">
+                    <col style="width:7.69%">
+                    <col style="width:10.23%">
+                    <col style="width:10.23%">
+                    <col style="width:12.03%">
+                    <col style="width:12.42%">
+                    <col style="width:12.03%">
+                    <col style="width:15.02%">
+                    <col style="width:15.42%">
+                </colgroup>
+                <!-- Row 1 -->
+                <tr>
+                    <td class="row-num">1</td>
+                    <td class="col-5 label-cell" colspan="2">Loan Account No.</td>
+                    <td class="value-cell" colspan="2">{{.Data.LoadAccountNumber}}</td>
+                    <td class="col-5 label-cell">Type of Loan</td>
+                    <td class="value-cell" colspan="3">Overdraft Against Fixed Deposit</td>
+                </tr>
+                <!-- Row 2 -->
+                <tr>
+                    <td class="row-num">2</td>
+                    <td class="col-5 label-cell" colspan="4">Sanctioned Loan amount (in Rupees)</td>
+                    <td class="value-cell" colspan="4">{{.Data.SanctionedLoanAmount}}</td>
+                </tr>
+                <!-- Row 3 -->
+                <tr>
+                    <td class="row-num">3</td>
+                    <td colspan="4">Disbursal schedule<br>(i) Disbursement in stages or 100% upfront.<br>(ii) If it is
+                        stage wise, mention the clause of loan agreement having relevant details</td>
+                    <td class="value-cell text-center" colspan="4">100% upfront</td>
+                </tr>
+                <!-- Row 4 -->
+                <tr>
+                    <td class="row-num">4</td>
+                    <td class="label-cell col-5 col-3" colspan="4">Loan term (year/months/days)</td>
+                    <td class="value-cell" colspan="4">{{.Data.LoanTerm}}</td>
+                </tr>
+                <!-- Row 5 -->
+                <tr>
+                    <td class="row-num">5</td>
+                    <td class="label-cell col-5" colspan="8">Instalment details</td>
+                </tr>
+                <tr>
+                    <td class="row-num-skip"></td>
+                    <td colspan="2">Type of instalments</td>
+                    <td colspan="2">Number of EPIs</td>
+                    <td colspan="2">EPI (Rs)</td>
+                    <td colspan="2">Commencement of repayment, post sanction</td>
+                </tr>
+                <tr>
+                    <td class="row-num-skip"></td>
+                    <td colspan="2" class="text-center">Not applicable</td>
+                    <td colspan="2" class="text-center ">Not applicable</td>
+                    <td colspan="2" class="text-center ">Not applicable</td>
+                    <td colspan="2" class="text-center ">Not applicable</td>
+                </tr>
+                <!-- Row 6 -->
+                <tr>
+                    <td class="row-num">6</td>
+                    <td class="label-cell col-5 col-3" colspan="4">Interest rate (%) and type (fixed or floating or
+                        hybrid)</td>
+                    <td class="value-cell" colspan="4">Floating</td>
+                </tr>
+                <!-- Row 7 -->
+                <tr>
+                    <td class="row-num" rowspan="4">7</td>
+                    <td class="label-cell col-5" colspan="8">Additional Information in case of Floating rate of interest
+                    </td>
+                </tr>
+                <tr>
+                    <td class="text-center row7-header" rowspan="2">Reference<br>Benchmark</td>
+                    <td class="text-center row7-header" rowspan="2">Benchmar<br>k rate<br>(%) (B)</td>
+                    <td class="text-center row7-header" rowspan="2">Spread<br>(%)<br>(S)</td>
+                    <td class="text-center row7-header" rowspan="2">Final rate<br>(%) R = (B)<br>+ (S)</td>
+                    <td class="text-center row7-header" colspan="2">Reset periodicity<br>2 (Months)</td>
+                    <td class="text-center row7-header" colspan="2">Impact of change in the reference benchmark (for 25
+                        bps change in &lsquo;R&rsquo;, change in:3)</td>
+                </tr>
+                <tr>
+                    <td class="text-center row7-header">B</td>
+                    <td class="text-center row7-header">S</td>
+                    <td class="text-center row7-header">EPI Rs)</td>
+                    <td class="text-center row7-header">No. of<br>EPIs</td>
+                </tr>
+                <tr>
+                    <td>Fixed<br>Deposit<br>(FD)</td>
+                    <td class="text-center">{{.Data.BenchmarkRate}}</td>
+                    <td class="text-center">{{.Data.Spread}}</td>
+                    <td class="text-center">{{.Data.FinatRate}}</td>
+                    <td class="text-center">On<br>renewal<br>of FD</td>
+                    <td class="text-center ">Not<br>applicable</td>
+                    <td class="text-center ">Not<br>applicable</td>
+                    <td class="text-center ">Not<br>applicable</td>
+                </tr>
+                <!-- Row 8 -->
+                <tr>
+                    <td class="row-num" rowspan="7">8</td>
+                    <td class="label-cell col-5" colspan="8">Fee/ Charges 4</td>
+                </tr>
+                <tr>
+                    <td class="row8-header" rowspan="2"></td>
+                    <td class="row8-header" rowspan="2"></td>
+                    <td class="text-center row8-header" colspan="3">Payable to the RE (A)</td>
+                    <td class="text-center row8-header" colspan="3">Payable to a third party through RE (B)</td>
+                </tr>
+                <tr>
+                    <td class="text-center row8-header">One-time/<br>Recurring</td>
+                    <td class="text-center row8-header" colspan="2">Amount (in Rs) or Percentage (%) as applicable5</td>
+                    <td class="text-center row8-header">One-time/<br>Recurring</td>
+                    <td class="text-center row8-header" colspan="2">Amount (in Rs) or Percentage (%) as applicable5</td>
+                </tr>
+                <tr>
+                    <td class="text-center">(i)</td>
+                    <td>Processing fees</td>
+                    <td class="text-center ">Nil</td>
+                    <td class="text-center ">Nil</td>
+                    <td class="text-center ">Nil</td>
+                    <td class="text-center ">Nil</td>
+                    <td class="text-center ">Nil</td>
+                    <td class="text-center ">Nil</td>
+                </tr>
+                <tr>
+                    <td class="text-center">(ii)</td>
+                    <td>Insurance charges</td>
+                    <td class="text-center ">Nil</td>
+                    <td class="text-center ">Nil</td>
+                    <td class="text-center ">Nil</td>
+                    <td class="text-center ">Nil</td>
+                    <td class="text-center ">Nil</td>
+                    <td class="text-center ">Nil</td>
+                </tr>
+                <tr>
+                    <td class="text-center">(iii)</td>
+                    <td>Valuation fees</td>
+                    <td class="text-center">Nil</td>
+                    <td class="text-center">Nil</td>
+                    <td class="text-center">Nil</td>
+                    <td class="text-center">Nil</td>
+                    <td class="text-center">Nil</td>
+                    <td class="text-center">Nil</td>
+                </tr>
+                <tr>
+                    <td class="text-center">(iv)</td>
+                    <td>Any other (please specify)</td>
+                    <td class="text-center">Nil</td>
+                    <td class="text-center">Nil</td>
+                    <td class="text-center">Nil</td>
+                    <td class="text-center">Nil</td>
+                    <td class="text-center">Nil</td>
+                    <td class="text-center">Nil</td>
+                </tr>
+                <!-- Row 9 -->
+                <tr>
+                    <td class="row-num">9</td>
+                    <td class="label-cell col-5" colspan="4">Annual Percentage Rate (APR) (%)6</td>
+                    <td class="value-cell" colspan="4">{{.Data.APR}}</td>
+                </tr>
+                <!-- Row 10 -->
+                <tr>
+                    <td class="row-num" rowspan="6">10</td>
+                    <td class="label-cell col-5" colspan="8">Details of Contingent Charges (in Rs or %, as applicable)
+                    </td>
+                </tr>
+                <tr>
+                    <td class="text-center">(i)</td>
+                    <td colspan="5">Penal charges, if any, in case of delayed payment</td>
+                    <td class="text-center" colspan="2">18% per annum on the<br>overdrawn amount.</td>
+                </tr>
+                <tr>
+                    <td class="text-center">(ii)</td>
+                    <td colspan="5">Other penal charges, if any</td>
+                    <td class="text-center " colspan="2">Nil</td>
+                </tr>
+                <tr>
+                    <td class="text-center">(iii)</td>
+                    <td colspan="5">Foreclosure charges, if applicable</td>
+                    <td class="text-center " colspan="2">Nil</td>
+                </tr>
+                <tr>
+                    <td class="text-center">(iv)</td>
+                    <td colspan="5">Charges for switching of loans from floating to fixed rate and vice versa</td>
+                    <td class="text-center " colspan="2">Nil</td>
+                </tr>
+                <tr>
+                    <td class="text-center">(v)</td>
+                    <td colspan="5">Any other charges (please specify)</td>
+                    <td class="text-center " colspan="2">Nil</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+    <!-- PAGE 2: Part 2 -->
+    <div class="page page-2 page-break">
+        <div class="logo">{{ image_placeholder }}</div>
+        <div class="header">
+            <div class="title">Part 2 (Other qualitative information)</div>
+        </div>
+        <div class="table-wrapper">
+
+            <table class="table-stack">
+                <colgroup>
+                    <col style="width:6.5%">
+                    <col style="width:46.5%">
+                    <col style="width:47%">
+                </colgroup>
+                <tr>
+                    <td></td>
+                    <td class="clause-cell">Clause of Loan agreement relating to engagement of recovery agents</td>
+                    <td class="text-center">Not applicable</td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td class="clause-cell">Clause of Loan agreement which details grievance redressal mechanism</td>
+                    <td class="col-cell">
+                        Designation: Grievance Redressal<br>
+                        Officer Name: Mr. Kannan Ramaseshan<br>
+                        Address: Grievance Redressal Cell,<br>
+                        HDFC Bank Limited, 1st Floor, Empire<br>
+                        Plaza- 1, Lal Bahadur Shastri Marg,<br>
+                        Chandan Nagar, Vikhroli West, Mumbai<br>
+                        – 400083.
+                    </td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td class="clause-cell">Phone number and email id of the nodal grievance redressal officer</td>
+                    <td class="col-cell">
+                        Toll free number: 18002664060<br>
+                        Email: grievance.redressaldl@hdfcbank.com<br>
+                        Availability - Monday to Saturday on<br>
+                        18002664060 between 9.30am to 5.30 pm<br>
+                        Please note this facility is not available on 2nd &amp;<br>
+                        4th Saturdays, all Sundays and Banks Holidays
+                    </td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td class="clause-cell-2">Whether the loan is, or in future maybe, subject to transfer to other REs
+                        or securitisation (Yes/ No)</td>
+                    <td class="text-center ">Not applicable</td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td colspan="2" class="clause-cell-3">In case of lending under collaborative lending arrangements
+                        (e.g., co-lending/ outsourcing), following additional details may be furnished:</td>
+                </tr>
+            </table>
+            <table class="table-stack table-stack--3col">
+                <colgroup>
+                    <col style="width:6.5%">
+                    <col style="width:31.16%">
+                    <col style="width:31.16%">
+                    <col style="width:31.18%">
+                </colgroup>
+                <tr>
+                    <td></td>
+                    <td class="text-center clause-cell-4">Name of the originating RE,<br>along with its
+                        funding<br>proportion</td>
+                    <td class="text-center clause-cell-4">Name of the partner RE along<br>with its proportion
+                        of<br>funding</td>
+                    <td class="text-center clause-cell-4">Blended rate of<br>interest</td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td class="text-center  clause-cell-5" data-label="Originating RE">Not applicable</td>
+                    <td class="text-center  clause-cell-5" data-label="Partner RE">Not applicable</td>
+                    <td class="text-center  clause-cell-5" data-label="Blended rate">Not applicable</td>
+                </tr>
+            </table>
+            <table class="table-stack">
+                <colgroup>
+                    <col style="width:6.5%">
+                    <col style="width:46.5%">
+                    <col style="width:47%">
+                </colgroup>
+                <tr>
+                    <td></td>
+                    <td colspan="2" class="clause-cell-5">In case of digital loans, following specific disclosures may
+                        be furnished:</td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td class="clause-cell-5">Cooling off/look-up period, in terms of RE&rsquo;s board approved policy,
+                        during which borrower shall not be charged any penalty on prepayment of loan</td>
+                    <td class="clause-cell-5">The overdraft can be closed any time without penalty during the tenure of
+                        the loan</td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td class="clause-cell-5">Details of LSP acting as recovery agent and authorized to approach the
+                        borrower</td>
+                    <td class="text-center  clause-cell-5">Not applicable</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+    <!-- PAGE 3: Annex B -->
+    <div class="page page-3">
+        <div class="logo">{{ image_placeholder }}</div>
+        <div class="annex-header">
+            <span class="part2">PART 2</span><br>
+            <span class="annexb"> Annex B</span>
+        </div>
+        <div class="header">
+            <div class="title">Illustration for Computation of APR</div>
+        </div>
+        <div class="table-wrapper">
+            <table class="table-annex">
+                <colgroup>
+                    <col style="width:8%">
+                    <col style="width:70%">
+                    <col style="width:22%">
+                </colgroup>
+                <tr>
+                    <td class="text-center label-cell-1">SR<br>No.</td>
+                    <td class=" label-cell-2 ">Parameter</td>
+                    <td class=" label-cell-2">Details</td>
+                </tr>
+                <tr>
+                    <td class="text-center col-5">1</td>
+                    <td>Sanctioned Loan amount (in Rupees) (Sl no. 2 of the KFS template – Part 1)</td>
+                    <td class="text-center">{{.Data.SanctionedLoanAmount}}</td>
+                </tr>
+                <tr>
+                    <td class="text-center col-5">2</td>
+                    <td class="col-3">Loan Term (in years/ months/ days) (Sl No.4 of the KFS template – Part 1)</td>
+                    <td class="text-center col-3">{{.Data.LoanTerm}}</td>
+                </tr>
+                <tr>
+                    <td class="text-center">a)</td>
+                    <td class="col-3">No. of instalments for payment of principal, in case of nonequated periodic loans
+                    </td>
+                    <td class="col-3 text-center">Not applicable</td>
+                </tr>
+                <tr>
+                    <td class="text-center">b)</td>
+                    <td class="col-3">Type of EPI Amount of each EPI (in Rupees) and nos. of EPIs (e.g., no. of EMIs in
+                        case of monthly instalments) (Sl No. 5 of the KFS template – Part 1)</td>
+                    <td class="col-3 text-center ">Not applicable</td>
+                </tr>
+                <tr>
+                    <td class="text-center">c)</td>
+                    <td class="col-3">No. of instalments for payment of capitalised interest, if any</td>
+                    <td class="col-3 text-center ">Not applicable</td>
+                </tr>
+                <tr>
+                    <td class="text-center">d)</td>
+                    <td class="col-3">Commencement of repayments, post sanction (Sl No. 5 of the KFS template – Part 1)
+                    </td>
+                    <td class="col-3 text-center ">Not applicable</td>
+                </tr>
+                <tr>
+                    <td class="text-center col-5">3</td>
+                    <td class="col-3">Interest rate type (fixed or floating or hybrid) (Sl No. 6 of the KFS template –
+                        Part 1)</td>
+                    <td class="col-3 text-center ">Floating</td>
+                </tr>
+                <tr>
+                    <td class="text-center col-5">4</td>
+                    <td class="col-3">Rate of Interest (Sl No. 7 of the KFS template – Part 1)</td>
+                    <td class="text-center col-3">{{.Data.RateOfInterest}}</td>
+                </tr>
+                <tr>
+                    <td class="text-center col-5">5</td>
+                    <td class="col-3">Total Interest Amount to be charged during the entire tenor of the loan as per the
+                        rate prevailing on sanction date (in Rupees)</td>
+                    <td class="col-3 text-center ">Not applicable</td>
+                </tr>
+                <tr>
+                    <td class="text-center col-5">6</td>
+                    <td class="col-3">Fee/ Charges payable8 (in Rupees)</td>
+                    <td class="col-3 text-center ">NIL</td>
+                </tr>
+                <tr>
+                    <td class="text-center">A</td>
+                    <td class="col-3">Payable to the RE (Sl No.8A of the KFS template-Part 1)</td>
+                    <td class="col-3 text-center ">NIL</td>
+                </tr>
+                <tr>
+                    <td class="text-center">B</td>
+                    <td class="col-3">Payable to third-party routed through RE (Sl No.8B of the KFS template – Part 1)
+                    </td>
+                    <td class="col-3 text-center ">NIL</td>
+                </tr>
+                <tr>
+                    <td class="text-center col-5">7</td>
+                    <td class="col-3">Net disbursed amount (1-6) (in Rupees)</td>
+                    <td class="col-3 text-center ">NIL</td>
+                </tr>
+                <tr>
+                    <td class="text-center col-5">8</td>
+                    <td class="col-3">Total amount to be paid by the borrower (sum of 1 and 5) (in Rupees)</td>
+                    <td class="col-3 text-center ">NIL</td>
+                </tr>
+                <tr>
+                    <td class="text-center col-5">9</td>
+                    <td class="col-3">Annual Percentage rate- Effective annualized interest rate (in percentage)10 (Sl
+                        No.9 of the KFS template-Part 1)</td>
+                    <td class="text-center col-3">{{.Data.APR}}</td>
+                </tr>
+                <tr>
+                    <td class="text-center col-5">10</td>
+                    <td class="col-3">Schedule of disbursement as per terms and conditions</td>
+                    <td class="col-3 text-center ">Not applicable</td>
+                </tr>
+                <tr>
+                    <td class="text-center col-5">11</td>
+                    <td class="col-3">Due date of payment of instalment and interest</td>
+                    <td class="col-3 text-center ">Not applicable</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <script>
+        (function () {
+            function adjustZoom() {
+                if (window.matchMedia && window.matchMedia('print').matches) {
+                    return;
+                }
+                const targetWidth = 794; // 210mm in pixels at 96 DPI
+                const padding = 20; // 10px padding on each side of the body
+                const viewportWidth = window.innerWidth;
+
+                if (viewportWidth < targetWidth + padding) {
+                    const zoomScale = (viewportWidth - padding) / targetWidth;
+                    document.body.style.zoom = zoomScale;
+                } else {
+                    document.body.style.zoom = '1';
+                }
+            }
+
+            window.addEventListener('resize', adjustZoom);
+            window.addEventListener('DOMContentLoaded', adjustZoom);
+            adjustZoom();
+        })();
+    </script>
+</body>
+
+</html>
+{{end}}
