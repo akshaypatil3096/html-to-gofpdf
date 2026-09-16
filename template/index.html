@@ -1,0 +1,775 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HDFC Bank - Key Facts Statement</title>
+  <meta name="description" content="Key Facts Statement (KFS) - Overdraft Against Fixed Deposit, HDFC Bank">
+  
+  <style>
+    /* Google Fonts */
+    @import url('https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap');
+
+    :root {
+      --page-width: 210mm;
+      --page-height: 297mm;
+      --page-margin-top: 28.93mm;   /* 82pt (1640 twips) */
+      --page-margin-bottom: 4.94mm;  /* 14pt (280 twips) */
+      --page-margin-left: 10.58mm;   /* 30pt (600 twips) */
+      --page-margin-right: 10.58mm;  /* 30pt (600 twips) */
+
+      --border-color: #020202;
+      --border-width: 0.5pt;
+      --hdfc-blue: #00498E;
+      --hdfc-red: #EB1C23;
+
+      --font-family: 'Helvetica Neue', Helvetica, -apple-system, BlinkMacSystemFont, Arial, 'Noto Sans', sans-serif;
+      --font-size-base: 9.5pt;
+      --font-size-title: 11pt;
+      --line-height-base: 1.22;
+    }
+
+    * {
+      box-sizing: border-box;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+
+    html, body {
+      margin: 0;
+      padding: 0;
+      background-color: #e9ecef;
+      color: #000000;
+      font-family: var(--font-family);
+      font-size: var(--font-size-base);
+      line-height: var(--line-height-base);
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    /* Viewport Wrapper */
+    .viewport-wrapper {
+      width: 100%;
+      overflow-x: hidden;
+      padding: 20px 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      box-sizing: border-box;
+    }
+
+    /* Document Container with Automatic Fit-to-Width */
+    .document-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 24px;
+      width: var(--page-width);
+      transform-origin: top center;
+      transition: transform 0.15s ease-out;
+    }
+
+    /* A4 Document Page */
+    .page {
+      position: relative;
+      width: var(--page-width);
+      min-height: var(--page-height);
+      height: auto;
+      padding: var(--page-margin-top) var(--page-margin-right) var(--page-margin-bottom) var(--page-margin-left);
+      background: #ffffff;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+      box-sizing: border-box;
+      flex-shrink: 0;
+    }
+
+    /* Header Logo (matching DOCX coordinates: posH=30pt, posV=30pt) */
+    .page-logo {
+      position: absolute;
+      top: 30pt;
+      left: 30pt;
+      width: 142pt;
+      height: 24pt;
+    }
+
+    .page-logo svg {
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+
+    /* Headings */
+    .doc-title {
+      font-size: var(--font-size-title);
+      font-weight: 700;
+      margin: 0 0 2px 0;
+      color: #000000;
+    }
+
+    .doc-subtitle {
+      font-size: var(--font-size-title);
+      font-weight: 400;
+      text-align: center;
+      margin: 0 0 6px 0;
+      color: #000000;
+    }
+
+    .section-tag {
+      font-size: var(--font-size-base);
+      font-weight: 400;
+      margin: 0 0 2px 0;
+    }
+
+    .doc-annex {
+      font-size: var(--font-size-base);
+      font-weight: 700;
+      margin: 0 0 2px 0;
+    }
+
+    /* Table Base Styles */
+    table.kfs-table {
+      width: 100%;
+      border-collapse: collapse;
+      table-layout: fixed;
+      border: var(--border-width) solid var(--border-color);
+      font-size: var(--font-size-base);
+      line-height: 1.22;
+      margin-bottom: 0;
+    }
+
+    table.kfs-table td,
+    table.kfs-table th {
+      border: var(--border-width) solid var(--border-color);
+      padding: 2.2px 3.5px;
+      vertical-align: middle;
+      word-wrap: break-word;
+      overflow-wrap: break-word;
+      color: #000000;
+    }
+
+    /* Text Alignment & Weights */
+    .text-center { text-align: center; }
+    .text-left   { text-align: left; }
+    .text-right  { text-align: right; }
+
+    .font-bold   { font-weight: 700; }
+    .font-normal { font-weight: 400; }
+
+    .valign-top    { vertical-align: top !important; }
+    .valign-middle { vertical-align: middle !important; }
+
+    /* Nested Lists */
+    .cell-list {
+      margin: 1px 0 1px 16px;
+      padding: 0;
+      list-style-type: disc;
+    }
+
+    .cell-list li {
+      margin-bottom: 2px;
+    }
+
+    /* Footnotes and Superscripts */
+    sup {
+      font-size: 7.5pt;
+      line-height: 0;
+      vertical-align: super;
+    }
+
+    /* Dynamic Placeholders */
+    .placeholder {
+      color: #000000;
+    }
+
+    .placeholder-empty {
+      display: inline-block;
+      min-width: 16px;
+    }
+
+    /* Mobile Screen Responsiveness */
+    @media screen and (max-width: 820px) {
+      .viewport-wrapper {
+        padding: 8px 0;
+      }
+      .page {
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
+      }
+    }
+
+    /* Dedicated Print & Puppeteer PDF Styles */
+    @page {
+      size: A4 portrait;
+      margin: 0;
+    }
+
+    @media print {
+      html, body {
+        background: none !important;
+        padding: 0 !important;
+        margin: 0 !important;
+      }
+
+      .viewport-wrapper {
+        padding: 0 !important;
+        margin: 0 !important;
+        display: block !important;
+        background: none !important;
+        overflow: visible !important;
+      }
+
+      .document-container {
+        padding: 0 !important;
+        margin: 0 !important;
+        gap: 0 !important;
+        display: block !important;
+        transform: none !important;
+        width: var(--page-width) !important;
+      }
+
+      .page {
+        margin: 0 !important;
+        box-shadow: none !important;
+        border: none !important;
+        width: var(--page-width) !important;
+        height: var(--page-height) !important;
+        min-height: var(--page-height) !important;
+        max-height: var(--page-height) !important;
+        page-break-after: always !important;
+        break-after: page !important;
+        page-break-inside: avoid !important;
+        break-inside: avoid !important;
+        overflow: hidden !important;
+        padding: var(--page-margin-top) var(--page-margin-right) var(--page-margin-bottom) var(--page-margin-left) !important;
+      }
+
+      .page:last-child {
+        page-break-after: auto !important;
+        break-after: auto !important;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <main class="viewport-wrapper" id="viewport-wrapper">
+    <div class="document-container" id="doc-container">
+
+      <!-- ==========================================
+           PAGE 1: Part 1 (Interest rate and fees/charges)
+           ========================================== -->
+      <section class="page" id="page-1">
+        <header class="page-logo">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 190 32" width="142pt" height="24pt">
+  <rect x="0" y="0" width="32" height="32" fill="#FFFFFF"/>
+  <rect x="0" y="0" width="11" height="11" fill="#EB1C23"/>
+  <rect x="21" y="0" width="11" height="11" fill="#EB1C23"/>
+  <rect x="0" y="21" width="11" height="11" fill="#EB1C23"/>
+  <rect x="21" y="21" width="11" height="11" fill="#EB1C23"/>
+  <rect x="11" y="11" width="10" height="10" fill="#00498E"/>
+  <rect x="32" y="0" width="158" height="32" fill="#00498E"/>
+  <text x="42" y="22.5" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="18" font-weight="700" fill="#FFFFFF" letter-spacing="1">HDFC BANK</text>
+</svg>
+        </header>
+
+        <h1 class="doc-title">Key Facts Statement</h1>
+        <div class="doc-subtitle">Part 1 (Interest rate and fees/charges)</div>
+
+        <table class="kfs-table" aria-label="Part 1 Interest rate and fees and charges">
+          <colgroup>
+            <col style="width: 4.67%;">  <!-- Col 0: 503 twips -->
+            <col style="width: 12.45%;"> <!-- Col 1: 1342 twips -->
+            <col style="width: 8.91%;">  <!-- Col 2: 960 twips -->
+            <col style="width: 8.95%;">  <!-- Col 3: 964 twips -->
+            <col style="width: 12.91%;"> <!-- Col 4: 1391 twips -->
+            <col style="width: 11.33%;"> <!-- Col 5: 1221 twips -->
+            <col style="width: 10.52%;"> <!-- Col 6: 1134 twips -->
+            <col style="width: 11.84%;"> <!-- Col 7: 1276 twips -->
+            <col style="width: 18.42%;"> <!-- Col 8: 1984 twips -->
+          </colgroup>
+          <tbody>
+            <!-- Row 0 -->
+            <tr>
+              <td class="text-center font-bold">1</td>
+              <td colspan="2" class="text-left font-bold">Loan Account No.</td>
+              <td colspan="2" class="text-left"><span class="placeholder placeholder-empty" data-placeholder="loan_account_number">{{loan_account_number}}</span></td>
+              <td class="text-left font-bold">Type of Loan</td>
+              <td colspan="3" class="text-left"><span class="placeholder" data-placeholder="loan_type">{{loan_type}}</span></td>
+            </tr>
+
+            <!-- Row 1 -->
+            <tr>
+              <td class="text-center font-bold">2</td>
+              <td colspan="4" class="text-left font-bold">Sanctioned Loan amount (in Rupees)</td>
+              <td colspan="4" class="text-left"><span class="placeholder placeholder-empty" data-placeholder="sanctioned_loan_amount">{{sanctioned_loan_amount}}</span></td>
+            </tr>
+
+            <!-- Row 2 -->
+            <tr>
+              <td class="text-center font-bold">3</td>
+              <td colspan="4" class="text-left">
+                Disbursal schedule
+                <ul class="cell-list">
+                  <li>Disbursement in stages or 100% upfront.</li>
+                  <li>If it is stage wise, mention the clause of loan agreement having relevant details</li>
+                </ul>
+              </td>
+              <td colspan="4" class="text-center"><span class="placeholder" data-placeholder="disbursal_schedule">{{disbursal_schedule}}</span></td>
+            </tr>
+
+            <!-- Row 3 -->
+            <tr>
+              <td class="text-center font-bold">4</td>
+              <td colspan="4" class="text-left font-bold">Loan term (year/months/days)</td>
+              <td colspan="4" class="text-left"><span class="placeholder placeholder-empty" data-placeholder="loan_term">{{loan_term}}</span></td>
+            </tr>
+
+            <!-- Row 4 (Sl. No. 5 with rowspan 3 spanning Rows 4, 5, 6) -->
+            <tr>
+              <td rowspan="3" class="text-center font-bold valign-middle">5</td>
+              <td colspan="8" class="text-left font-bold">Instalment details</td>
+            </tr>
+
+            <!-- Row 5 (Sub-headers for Instalment details) -->
+            <tr>
+              <td colspan="2" class="text-left">Type of instalments</td>
+              <td colspan="2" class="text-left">Number of EPIs</td>
+              <td colspan="2" class="text-center">EPI (Rs)</td>
+              <td colspan="2" class="text-left">Commencement of repayment, post sanction</td>
+            </tr>
+
+            <!-- Row 6 (Values for Instalment details) -->
+            <tr>
+              <td colspan="2" class="text-left"><span class="placeholder" data-placeholder="instalment_type">{{instalment_type}}</span></td>
+              <td colspan="2" class="text-left"><span class="placeholder" data-placeholder="number_of_epis">{{number_of_epis}}</span></td>
+              <td colspan="2" class="text-center"><span class="placeholder" data-placeholder="epi_amount">{{epi_amount}}</span></td>
+              <td colspan="2" class="text-left"><span class="placeholder" data-placeholder="repayment_commencement">{{repayment_commencement}}</span></td>
+            </tr>
+
+            <!-- Row 7 -->
+            <tr>
+              <td class="text-center font-bold">6</td>
+              <td colspan="4" class="text-left font-bold">Interest rate (%) and type (fixed or floating or hybrid)</td>
+              <td colspan="4" class="text-center"><span class="placeholder" data-placeholder="interest_rate_and_type">{{interest_rate_and_type}}</span></td>
+            </tr>
+
+            <!-- Row 8 (Sl. No. 7 with rowspan 4 spanning Rows 8, 9, 10, 11) -->
+            <tr>
+              <td rowspan="4" class="text-center font-bold valign-middle">7</td>
+              <td colspan="8" class="text-left font-bold">Additional Information in case of Floating rate of interest</td>
+            </tr>
+
+            <!-- Row 9 (Floating rate headers, cols 1-4 have rowspan 2) -->
+            <tr>
+              <td rowspan="2" class="text-left valign-middle">Reference Benchmark</td>
+              <td rowspan="2" class="text-left valign-middle">Benchmark rate (%) (B)</td>
+              <td rowspan="2" class="text-left valign-middle">Spread (%) (S)</td>
+              <td rowspan="2" class="text-left valign-middle">Final rate (%) R = (B) + (S)</td>
+              <td colspan="2" class="text-left">Reset periodicity<sup>2</sup> (Months)</td>
+              <td colspan="2" class="text-left">Impact of change in the reference benchmark (for 25 bps change in ‘R’, change in:<sup>3</sup>)</td>
+            </tr>
+
+            <!-- Row 10 (Sub-headers for Reset periodicity & Impact) -->
+            <tr>
+              <td class="text-center">B</td>
+              <td class="text-left">S</td>
+              <td class="text-center">EPI Rs)</td>
+              <td class="text-center">No. of EPIs</td>
+            </tr>
+
+            <!-- Row 11 (Floating rate data values) -->
+            <tr>
+              <td class="text-left"><span class="placeholder" data-placeholder="reference_benchmark">{{reference_benchmark}}</span></td>
+              <td class="text-center"><span class="placeholder placeholder-empty" data-placeholder="benchmark_rate">{{benchmark_rate}}</span></td>
+              <td class="text-center"><span class="placeholder placeholder-empty" data-placeholder="spread_rate">{{spread_rate}}</span></td>
+              <td class="text-center"><span class="placeholder placeholder-empty" data-placeholder="final_rate">{{final_rate}}</span></td>
+              <td class="text-left"><span class="placeholder" data-placeholder="reset_periodicity_b">{{reset_periodicity_b}}</span></td>
+              <td class="text-left"><span class="placeholder" data-placeholder="reset_periodicity_s">{{reset_periodicity_s}}</span></td>
+              <td class="text-left"><span class="placeholder" data-placeholder="impact_epi">{{impact_epi}}</span></td>
+              <td class="text-left"><span class="placeholder" data-placeholder="impact_no_of_epis">{{impact_no_of_epis}}</span></td>
+            </tr>
+
+            <!-- Row 12 (Sl. No. 8 Header) -->
+            <tr>
+              <td class="text-center font-bold">8</td>
+              <td colspan="8" class="text-left font-bold">Fee/ Charges<sup>4</sup></td>
+            </tr>
+
+            <!-- Row 13 (Fee headers, cols 0 and 1 have rowspan 2) -->
+            <tr>
+              <td rowspan="2" class="text-center"></td>
+              <td colspan="2" rowspan="2" class="text-left"></td>
+              <td colspan="3" class="text-left">Payable to the RE (A)</td>
+              <td colspan="3" class="text-left">Payable to a third party through RE (B)</td>
+            </tr>
+
+            <!-- Row 14 (Sub-headers for Payable to RE and Third Party) -->
+            <tr>
+              <td class="text-left">One-time/ Recurring</td>
+              <td colspan="2" class="text-left">Amount (in Rs) or Percentage (%) as applicable<sup>5</sup></td>
+              <td class="text-left">One-time/ Recurring</td>
+              <td colspan="2" class="text-left">Amount (in Rs) or Percentage (%) as applicable<sup>5</sup></td>
+            </tr>
+
+            <!-- Row 15: Processing fees -->
+            <tr>
+              <td class="text-left">(i)</td>
+              <td colspan="2" class="text-left">Processing fees</td>
+              <td class="text-left"><span class="placeholder" data-placeholder="processing_fee_re_type">{{processing_fee_re_type}}</span></td>
+              <td class="text-center"><span class="placeholder" data-placeholder="processing_fee_re_amount">{{processing_fee_re_amount}}</span></td>
+              <td class="text-center"><span class="placeholder" data-placeholder="processing_fee_re_percent">{{processing_fee_re_percent}}</span></td>
+              <td class="text-left"><span class="placeholder" data-placeholder="processing_fee_tp_type">{{processing_fee_tp_type}}</span></td>
+              <td class="text-center"><span class="placeholder" data-placeholder="processing_fee_tp_amount">{{processing_fee_tp_amount}}</span></td>
+              <td class="text-center"><span class="placeholder" data-placeholder="processing_fee_tp_percent">{{processing_fee_tp_percent}}</span></td>
+            </tr>
+
+            <!-- Row 16: Insurance charges -->
+            <tr>
+              <td class="text-left">(ii)</td>
+              <td colspan="2" class="text-left">Insurance charges</td>
+              <td class="text-left"><span class="placeholder" data-placeholder="insurance_fee_re_type">{{insurance_fee_re_type}}</span></td>
+              <td class="text-center"><span class="placeholder" data-placeholder="insurance_fee_re_amount">{{insurance_fee_re_amount}}</span></td>
+              <td class="text-center"><span class="placeholder" data-placeholder="insurance_fee_re_percent">{{insurance_fee_re_percent}}</span></td>
+              <td class="text-left"><span class="placeholder" data-placeholder="insurance_fee_tp_type">{{insurance_fee_tp_type}}</span></td>
+              <td class="text-center"><span class="placeholder" data-placeholder="insurance_fee_tp_amount">{{insurance_fee_tp_amount}}</span></td>
+              <td class="text-center"><span class="placeholder" data-placeholder="insurance_fee_tp_percent">{{insurance_fee_tp_percent}}</span></td>
+            </tr>
+
+            <!-- Row 17: Valuation fees -->
+            <tr>
+              <td class="text-right">(iii)</td>
+              <td colspan="2" class="text-left">Valuation fees</td>
+              <td class="text-left"><span class="placeholder" data-placeholder="valuation_fee_re_type">{{valuation_fee_re_type}}</span></td>
+              <td class="text-center"><span class="placeholder" data-placeholder="valuation_fee_re_amount">{{valuation_fee_re_amount}}</span></td>
+              <td class="text-center"><span class="placeholder" data-placeholder="valuation_fee_re_percent">{{valuation_fee_re_percent}}</span></td>
+              <td class="text-left"><span class="placeholder" data-placeholder="valuation_fee_tp_type">{{valuation_fee_tp_type}}</span></td>
+              <td class="text-center"><span class="placeholder" data-placeholder="valuation_fee_tp_amount">{{valuation_fee_tp_amount}}</span></td>
+              <td class="text-center"><span class="placeholder" data-placeholder="valuation_fee_tp_percent">{{valuation_fee_tp_percent}}</span></td>
+            </tr>
+
+            <!-- Row 18: Any other fees -->
+            <tr>
+              <td class="text-right">(iv)</td>
+              <td colspan="2" class="text-left">Any other (please specify)</td>
+              <td class="text-left"><span class="placeholder" data-placeholder="other_fee_re_type">{{other_fee_re_type}}</span></td>
+              <td class="text-center"><span class="placeholder" data-placeholder="other_fee_re_amount">{{other_fee_re_amount}}</span></td>
+              <td class="text-center"><span class="placeholder" data-placeholder="other_fee_re_percent">{{other_fee_re_percent}}</span></td>
+              <td class="text-left"><span class="placeholder" data-placeholder="other_fee_tp_type">{{other_fee_tp_type}}</span></td>
+              <td class="text-center"><span class="placeholder" data-placeholder="other_fee_tp_amount">{{other_fee_tp_amount}}</span></td>
+              <td class="text-center"><span class="placeholder" data-placeholder="other_fee_tp_percent">{{other_fee_tp_percent}}</span></td>
+            </tr>
+
+            <!-- Row 19: APR -->
+            <tr>
+              <td class="text-center font-bold">9</td>
+              <td colspan="8" class="text-left font-bold">
+                Annual Percentage Rate (APR) (%)<sup>6</sup> <span class="placeholder placeholder-empty" data-placeholder="annual_percentage_rate">{{annual_percentage_rate}}</span>
+              </td>
+            </tr>
+
+            <!-- Row 20: Contingent Charges Header -->
+            <tr>
+              <td class="text-right font-bold">10</td>
+              <td colspan="8" class="text-left font-bold">Details of Contingent Charges (in Rs or %, as applicable)</td>
+            </tr>
+
+            <!-- Row 21: Penal charges delayed payment -->
+            <tr>
+              <td class="text-left">(i)</td>
+              <td colspan="6" class="text-left">Penal charges, if any, in case of delayed payment</td>
+              <td colspan="2" class="text-left"><span class="placeholder" data-placeholder="penal_charges_delayed_payment">{{penal_charges_delayed_payment}}</span></td>
+            </tr>
+
+            <!-- Row 22: Other penal charges -->
+            <tr>
+              <td class="text-left">(ii)</td>
+              <td colspan="6" class="text-left">Other penal charges, if any</td>
+              <td colspan="2" class="text-center"><span class="placeholder" data-placeholder="other_penal_charges">{{other_penal_charges}}</span></td>
+            </tr>
+
+            <!-- Row 23: Foreclosure charges -->
+            <tr>
+              <td class="text-right">(iii)</td>
+              <td colspan="6" class="text-left">Foreclosure charges, if applicable</td>
+              <td colspan="2" class="text-center"><span class="placeholder" data-placeholder="foreclosure_charges">{{foreclosure_charges}}</span></td>
+            </tr>
+
+            <!-- Row 24: Switching charges -->
+            <tr>
+              <td class="text-right">(iv)</td>
+              <td colspan="6" class="text-left">Charges for switching of loans from floating to fixed rate and vice versa</td>
+              <td colspan="2" class="text-center"><span class="placeholder" data-placeholder="switching_charges">{{switching_charges}}</span></td>
+            </tr>
+
+            <!-- Row 25: Any other charges -->
+            <tr>
+              <td class="text-left">(v)</td>
+              <td colspan="6" class="text-left">Any other charges (please specify)</td>
+              <td colspan="2" class="text-center"><span class="placeholder" data-placeholder="contingent_other_charges">{{contingent_other_charges}}</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <!-- ==========================================
+           PAGE 2: Part 2 (Other qualitative information)
+           ========================================== -->
+      <section class="page" id="page-2">
+        <header class="page-logo">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 190 32" width="142pt" height="24pt">
+  <rect x="0" y="0" width="32" height="32" fill="#FFFFFF"/>
+  <rect x="0" y="0" width="11" height="11" fill="#EB1C23"/>
+  <rect x="21" y="0" width="11" height="11" fill="#EB1C23"/>
+  <rect x="0" y="21" width="11" height="11" fill="#EB1C23"/>
+  <rect x="21" y="21" width="11" height="11" fill="#EB1C23"/>
+  <rect x="11" y="11" width="10" height="10" fill="#00498E"/>
+  <rect x="32" y="0" width="158" height="32" fill="#00498E"/>
+  <text x="42" y="22.5" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="18" font-weight="700" fill="#FFFFFF" letter-spacing="1">HDFC BANK</text>
+</svg>
+        </header>
+
+        <div class="doc-subtitle">Part 2 (Other qualitative information)</div>
+
+        <table class="kfs-table" aria-label="Part 2 Other qualitative information">
+          <colgroup>
+            <col style="width: 6.66%;">  <!-- Col 0: 696 twips -->
+            <col style="width: 32.72%;"> <!-- Col 1: 3420 twips -->
+            <col style="width: 13.60%;"> <!-- Col 2: 1421 twips -->
+            <col style="width: 17.39%;"> <!-- Col 3: 1818 twips -->
+            <col style="width: 29.63%;"> <!-- Col 4: 3097 twips -->
+          </colgroup>
+          <tbody>
+            <!-- Row 0 -->
+            <tr>
+              <td class="text-left"></td>
+              <td colspan="2" class="text-left">Clause of Loan agreement relating to engagement of recovery agents</td>
+              <td colspan="2" class="text-center"><span class="placeholder" data-placeholder="recovery_agents_clause">{{recovery_agents_clause}}</span></td>
+            </tr>
+
+            <!-- Row 1 -->
+            <tr>
+              <td class="text-left"></td>
+              <td colspan="2" class="text-left">Clause of Loan agreement which details grievance redressal mechanism</td>
+              <td colspan="2" class="text-left">
+                Designation: Grievance Redressal Officer Name: Mr. Kannan Ramaseshan<br>
+                Address: Grievance Redressal Cell, HDFC Bank Limited, 1st Floor, Empire Plaza- 1, Lal Bahadur Shastri Marg, Chandan Nagar, Vikhroli West, Mumbai – 400083.
+              </td>
+            </tr>
+
+            <!-- Row 2 -->
+            <tr>
+              <td class="text-left"></td>
+              <td colspan="2" class="text-left">Phone number and email id of the nodal grievance redressal officer</td>
+              <td colspan="2" class="text-left">
+                Toll free number: 18002664060<br>
+                Email: <a href="mailto:grievance.redressaldl@hdfcbank.com" style="color:#000000; text-decoration: underline;">grievance.redressaldl@hdfcbank.com</a> Availability - Monday to Saturday on 18002664060 between 9.30am to 5.30 pm<br>
+                Please note this facility is not available on 2nd &amp; 4th Saturdays, all Sundays and Banks Holidays
+              </td>
+            </tr>
+
+            <!-- Row 3 -->
+            <tr>
+              <td class="text-left"></td>
+              <td colspan="2" class="text-left">Whether the loan is, or in future maybe, subject to transfer to other REs or securitisation (Yes/ No)</td>
+              <td colspan="2" class="text-center"><span class="placeholder" data-placeholder="transfer_securitisation">{{transfer_securitisation}}</span></td>
+            </tr>
+
+            <!-- Row 4 -->
+            <tr>
+              <td class="text-left"></td>
+              <td colspan="4" class="text-left">In case of lending under collaborative lending arrangements (e.g., co-lending/ outsourcing), following additional details may be furnished:</td>
+            </tr>
+
+            <!-- Row 5 -->
+            <tr>
+              <td class="text-left"></td>
+              <td class="text-left">Name of the originating RE, along with its funding proportion</td>
+              <td colspan="2" class="text-left">Name of the partner RE along with its proportion of funding</td>
+              <td class="text-center">Blended rate of interest</td>
+            </tr>
+
+            <!-- Row 6 -->
+            <tr>
+              <td class="text-left"></td>
+              <td class="text-left"><span class="placeholder" data-placeholder="collaborative_originating">{{collaborative_originating}}</span></td>
+              <td colspan="2" class="text-left"><span class="placeholder" data-placeholder="collaborative_partner">{{collaborative_partner}}</span></td>
+              <td class="text-center"><span class="placeholder" data-placeholder="blended_rate">{{blended_rate}}</span></td>
+            </tr>
+
+            <!-- Row 7 -->
+            <tr>
+              <td class="text-left"></td>
+              <td colspan="4" class="text-left">In case of digital loans, following specific disclosures may be furnished:</td>
+            </tr>
+
+            <!-- Row 8 -->
+            <tr>
+              <td class="text-left"></td>
+              <td colspan="2" class="text-left">Cooling off/look-up period, in terms of RE’s board approved policy, during which borrower shall not be charged any penalty on prepayment of loan</td>
+              <td colspan="2" class="text-left"><span class="placeholder" data-placeholder="cooling_off_period">{{cooling_off_period}}</span></td>
+            </tr>
+
+            <!-- Row 9 -->
+            <tr>
+              <td class="text-left"></td>
+              <td colspan="2" class="text-left">Details of LSP acting as recovery agent and authorized to approach the borrower</td>
+              <td colspan="2" class="text-center"><span class="placeholder" data-placeholder="lsp_recovery_agent">{{lsp_recovery_agent}}</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <!-- ==========================================
+           PAGE 3: PART 2 / Annex B (Computation of APR)
+           ========================================== -->
+      <section class="page" id="page-3">
+        <header class="page-logo">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 190 32" width="142pt" height="24pt">
+  <rect x="0" y="0" width="32" height="32" fill="#FFFFFF"/>
+  <rect x="0" y="0" width="11" height="11" fill="#EB1C23"/>
+  <rect x="21" y="0" width="11" height="11" fill="#EB1C23"/>
+  <rect x="0" y="21" width="11" height="11" fill="#EB1C23"/>
+  <rect x="21" y="21" width="11" height="11" fill="#EB1C23"/>
+  <rect x="11" y="11" width="10" height="10" fill="#00498E"/>
+  <rect x="32" y="0" width="158" height="32" fill="#00498E"/>
+  <text x="42" y="22.5" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="18" font-weight="700" fill="#FFFFFF" letter-spacing="1">HDFC BANK</text>
+</svg>
+        </header>
+
+        <div class="section-tag">PART 2</div>
+        <div class="doc-annex">Annex B</div>
+        <div class="doc-subtitle">Illustration for Computation of APR</div>
+
+        <table class="kfs-table" aria-label="Annex B Illustration for Computation of APR">
+          <colgroup>
+            <col style="width: 8.19%;">  <!-- Col 0: 856 twips -->
+            <col style="width: 69.65%;"> <!-- Col 1: 7281 twips -->
+            <col style="width: 22.16%;"> <!-- Col 2: 2316 twips -->
+          </colgroup>
+          <thead>
+            <tr>
+              <th class="text-center font-bold">SR No.</th>
+              <th class="text-left font-bold">Parameter</th>
+              <th class="text-left font-bold">Details</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="text-center font-bold">1</td>
+              <td class="text-left">Sanctioned Loan amount (in Rupees) (Sl no. 2 of the KFS template – Part 1)</td>
+              <td class="text-left"><span class="placeholder placeholder-empty" data-placeholder="annex_sanctioned_loan_amount">{{annex_sanctioned_loan_amount}}</span></td>
+            </tr>
+            <tr>
+              <td class="text-center font-bold">2</td>
+              <td class="text-left">Loan Term (in years/ months/ days) (Sl No.4 of the KFS template – Part 1)</td>
+              <td class="text-left"><span class="placeholder placeholder-empty" data-placeholder="annex_loan_term">{{annex_loan_term}}</span></td>
+            </tr>
+            <tr>
+              <td class="text-center">a)</td>
+              <td class="text-left">No. of instalments for payment of principal, in case of nonequated periodic loans</td>
+              <td class="text-left"><span class="placeholder" data-placeholder="annex_instalments_principal">{{annex_instalments_principal}}</span></td>
+            </tr>
+            <tr>
+              <td class="text-center">b)</td>
+              <td class="text-left">Type of EPI Amount of each EPI (in Rupees) and nos. of EPIs (e.g., no. of EMIs in case of monthly instalments) (Sl No. 5 of the KFS template – Part 1)</td>
+              <td class="text-left"><span class="placeholder" data-placeholder="annex_epi_type_amount">{{annex_epi_type_amount}}</span></td>
+            </tr>
+            <tr>
+              <td class="text-center">c)</td>
+              <td class="text-left">No. of instalments for payment of capitalised interest, if any</td>
+              <td class="text-left"><span class="placeholder" data-placeholder="annex_capitalised_interest">{{annex_capitalised_interest}}</span></td>
+            </tr>
+            <tr>
+              <td class="text-center">d)</td>
+              <td class="text-left">Commencement of repayments, post sanction (Sl No. 5 of the KFS template – Part 1)</td>
+              <td class="text-left"><span class="placeholder" data-placeholder="annex_commencement_repayments">{{annex_commencement_repayments}}</span></td>
+            </tr>
+            <tr>
+              <td class="text-center font-bold">3</td>
+              <td class="text-left">Interest rate type (fixed or floating or hybrid) (Sl No. 6 of the KFS template – Part 1)</td>
+              <td class="text-left"><span class="placeholder" data-placeholder="annex_interest_rate_type">{{annex_interest_rate_type}}</span></td>
+            </tr>
+            <tr>
+              <td class="text-center font-bold">4</td>
+              <td class="text-left">Rate of Interest (Sl No. 7 of the KFS template – Part 1)</td>
+              <td class="text-left"><span class="placeholder placeholder-empty" data-placeholder="annex_rate_of_interest">{{annex_rate_of_interest}}</span></td>
+            </tr>
+            <tr>
+              <td class="text-center font-bold">5</td>
+              <td class="text-left">Total Interest Amount to be charged during the entire tenor of the loan as per the rate prevailing on sanction date (in Rupees)</td>
+              <td class="text-left"><span class="placeholder" data-placeholder="annex_total_interest_amount">{{annex_total_interest_amount}}</span></td>
+            </tr>
+            <tr>
+              <td class="text-center font-bold">6</td>
+              <td class="text-left">Fee/ Charges payable<sup>8</sup> (in Rupees)</td>
+              <td class="text-left"><span class="placeholder" data-placeholder="annex_fee_payable_total">{{annex_fee_payable_total}}</span></td>
+            </tr>
+            <tr>
+              <td class="text-center">A</td>
+              <td class="text-left">Payable to the RE (Sl No.8A of the KFS template-Part 1)</td>
+              <td class="text-left"><span class="placeholder" data-placeholder="annex_fee_payable_re">{{annex_fee_payable_re}}</span></td>
+            </tr>
+            <tr>
+              <td class="text-center">B</td>
+              <td class="text-left">Payable to third-party routed through RE (Sl No.8B of the KFS template – Part 1)</td>
+              <td class="text-left"><span class="placeholder" data-placeholder="annex_fee_payable_tp">{{annex_fee_payable_tp}}</span></td>
+            </tr>
+            <tr>
+              <td class="text-center font-bold">7</td>
+              <td class="text-left">Net disbursed amount (1-6) (in Rupees)</td>
+              <td class="text-left"><span class="placeholder" data-placeholder="annex_net_disbursed_amount">{{annex_net_disbursed_amount}}</span></td>
+            </tr>
+            <tr>
+              <td class="text-center font-bold">8</td>
+              <td class="text-left">Total amount to be paid by the borrower (sum of 1 and 5) (in Rupees)</td>
+              <td class="text-left"><span class="placeholder" data-placeholder="annex_total_amount_payable">{{annex_total_amount_payable}}</span></td>
+            </tr>
+            <tr>
+              <td class="text-center font-bold">9</td>
+              <td class="text-left">Annual Percentage rate- Effective annualized interest rate (in percentage)<sup>10</sup> (Sl No.9 of the KFS template-Part 1)</td>
+              <td class="text-left"><span class="placeholder placeholder-empty" data-placeholder="annex_apr_effective_rate">{{annex_apr_effective_rate}}</span></td>
+            </tr>
+            <tr>
+              <td class="text-center font-bold">10</td>
+              <td class="text-left">Schedule of disbursement as per terms and conditions</td>
+              <td class="text-left"><span class="placeholder" data-placeholder="annex_disbursement_schedule">{{annex_disbursement_schedule}}</span></td>
+            </tr>
+            <tr>
+              <td class="text-center font-bold">11</td>
+              <td class="text-left">Due date of payment of instalment and interest</td>
+              <td class="text-left"><span class="placeholder" data-placeholder="annex_due_date_payment">{{annex_due_date_payment}}</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+    </div>
+  </main>
+
+  <!-- Automatic Fit-to-Width Script (Zero UI buttons) -->
+  <script>
+    function autoFitToWidth() {
+      const container = document.getElementById('doc-container');
+      const wrapper = document.getElementById('viewport-wrapper');
+      if (!container || !wrapper) return;
+      
+      const availableWidth = wrapper.clientWidth || window.innerWidth;
+      // 210mm in pixels at 96 DPI is ~793.7px
+      const standardWidth = 794;
+      
+      if (availableWidth < standardWidth) {
+        const scale = (availableWidth - 8) / standardWidth;
+        container.style.transform = `scale(${scale})`;
+        const heightReduction = (1 - scale) * container.offsetHeight;
+        container.style.marginBottom = `-${heightReduction}px`;
+      } else {
+        container.style.transform = 'none';
+        container.style.marginBottom = '0px';
+      }
+    }
+
+    window.addEventListener('DOMContentLoaded', autoFitToWidth);
+    window.addEventListener('resize', autoFitToWidth);
+    // Extra trigger after fonts or styles render
+    window.addEventListener('load', autoFitToWidth);
+  </script>
+</body>
+</html>
